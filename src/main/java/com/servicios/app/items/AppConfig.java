@@ -1,5 +1,6 @@
 package com.servicios.app.items;
 
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
@@ -8,6 +9,7 @@ import org.springframework.web.client.RestTemplate;
 public class AppConfig {
 	
 	@Bean("clienteRest") //si no le pasamos un nombre , toma el de la función
+	@LoadBalanced
 	public RestTemplate registrarRestTemplate() {
 		return new RestTemplate();
 	}
