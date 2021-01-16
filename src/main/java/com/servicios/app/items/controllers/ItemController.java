@@ -15,7 +15,7 @@ import com.servicios.app.items.models.service.ItemService;
 public class ItemController {
 	
 	@Autowired
-	@Qualifier("serviceRestTemplate")
+	@Qualifier("itemServiceFeign")
 	private ItemService itemService;
 	
 	@GetMapping("/items")
