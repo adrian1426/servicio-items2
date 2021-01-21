@@ -13,8 +13,13 @@ import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
@@ -47,6 +52,24 @@ public class ItemController {
 	@GetMapping("/items/{id}/cantidad/{cantidad}")
 	public Item getItemById(@PathVariable Long id,@PathVariable Integer cantidad) {
 		return itemService.findById(id, cantidad);
+	}
+	
+	@PostMapping("/items")
+	@ResponseStatus(HttpStatus.CREATED)
+	public Producto addProducto(@RequestBody Producto producto) {
+		return itemService.addProduct(producto);
+	}
+	
+	@PutMapping("/items/{id}")
+	@ResponseStatus(HttpStatus.CREATED)
+	public Producto editProduct(@RequestBody Producto producto,@PathVariable Long id) {
+		return itemService.editProduct(producto, id);
+	}
+	
+	@DeleteMapping("/items/{id}")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void deleteProduct(@PathVariable Long id) {
+		itemService.deleteProduct(id);
 	}
 	
 	public Item metodoAlternativo(Long id, Integer cantidad) {
