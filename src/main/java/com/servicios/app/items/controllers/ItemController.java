@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.servicios.app.items.models.Item;
-import com.servicios.app.items.models.Producto;
+import com.servicios.app.commons.models.entity.Producto;
 import com.servicios.app.items.models.service.ItemService;
 
 @RefreshScope //refresca la información de env y @values sin reiniciar el servicio
