@@ -37,7 +37,7 @@ public class ItemController {
 	private Environment env;
 	
 	@Autowired
-	@Qualifier("itemServiceFeign")
+	@Qualifier("serviceRestTemplate")
 	private ItemService itemService;
 	
 	@Value("${configuracion.texto}")
